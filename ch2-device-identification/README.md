@@ -27,10 +27,19 @@ dataset is involved), so they are redistributed here directly.
   they read:
   - `Jaccard_index-9.ipynb` — the modified Jaccard similarity baseline
     (latest version; `Jaccard_index.ipynb` and `_old` are earlier).
-  - `ML-KFold_without_name-10-10-9_dataset-*.ipynb` — one notebook per
-    ML classifier under k-fold evaluation (BNB/CNB/GNB/MNB naive Bayes
-    variants, SVM, decision tree `DS`, extra trees `ET`, random forest
-    `RF`; the `no-bias` set is run on the bias-corrected dataset).
+  - `ML-KFold_without_name-10-10-9_dataset-no-bias_*.ipynb` — **the
+    dissertation's ML comparison** (Chapter 2, Table 3): 10-fold
+    cross-validation repeated 10 times (mean of 100 folds) on
+    `dataset_all_original_ssdp.xlsx` (Data Set 2 — 12,000 records,
+    10 attributes) for the chapter's four classifiers: decision tree
+    (`no-bias_DS`), CategoricalNB (`no-bias_CNB`), extra trees
+    (`no-bias_ET`), and all four including random forest in
+    `no-bias_DS_ET_RF_CNB` (switch the `clf =` line inside the k-fold
+    loop to pick the classifier).
+  - the other `ML-KFold_without_name-10-10-9_dataset-*.ipynb` notebooks
+    (BNB/GNB/MNB naive Bayes, SVM/MLP variants, and the unsuffixed
+    decision-tree runs) are exploratory experiments that did not enter
+    the dissertation.
   - `ML-DecisionTreeClassifier_version1..3.ipynb` — decision-tree runs.
 - `data-prep/` — reserved; the synthetic-record generation currently
   lives inside the notebooks that read `db_for_gen*.xlsx`.
@@ -63,5 +72,17 @@ commented out in `list_data`.
 working copy: its last edited state runs `CategoricalNB` (not a decision
 tree) on one dataset, and its final summary cell indexes five results —
 it fails there, as it also did in the stored original run.
-🚧 Still to confirm: which notebook versions produced the dissertation
-numbers (several iterations are kept).
+✅ The `no-bias` k-fold set confirmed as the dissertation's Table 3
+(10-fold CV × 10 iterations on Data Set 2, 12,000 records): rerunning
+all four classifiers under the pinned environment reproduces the
+published numbers — decision tree 0.9992 (published 0.9987),
+CategoricalNB 0.9993 (0.9990), random forest 0.9960 (0.9965), extra
+trees 0.9945 (0.9949) — with fold-level standard deviations in the
+published range; the residual differences come from unseeded fold
+shuffles.
+⚠️ `no-bias_DS_ET_RF_CNB.ipynb` was saved mid-edit: its `list_data`
+cell points at the 677-record real set and its summary cells index five
+datasets. To reproduce Table 3, run `no-bias_DS` / `no-bias_CNB` /
+`no-bias_ET` as committed, and for random forest change the active
+`clf =` line in the k-fold loop to `RandomForestClassifier()` (or point
+`list_data` at `y` in the combined notebook).
