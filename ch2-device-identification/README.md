@@ -15,6 +15,13 @@ original experiments):
   `dataset_university_*` are the per-site subsets).
 - `dataset_all_gen*.xlsx` — the synthetic records generated from
   `db_for_gen.xlsx` / `db_for_gen_ssdp.xlsx`.
+- `device_inventory.csv` — the base inventory of the study's 92 IoT
+  devices (type, name, vendor) from which the `db_for_gen*` device
+  database was built (`db_for_gen` adds one device, Philips Hue Bridge,
+  and the `nupnp` / `ssdp_type` columns the generation uses). No
+  notebook reads it directly; it is kept as the provenance of the
+  generator database. Renamed in this artifact from `Book6.csv` (an
+  Excel default workbook name).
 - `dataset_jaccard_*.xlsx` — the record sets shaped for the Jaccard
   baseline.
 
