@@ -1,5 +1,7 @@
 # IoT Security Dissertation Artifact
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24132545.svg)](https://doi.org/10.5281/zenodo.24132545)
+
 Public reproducibility artifact for the PhD dissertation:
 
 > Phornsawan Roemsri. *Data-Driven Cybersecurity for Connected Devices:
@@ -49,6 +51,13 @@ reproduce.
 All four chapters (2–5) are complete and verified against the
 dissertation. Each chapter's README describes exactly what it
 reproduces, any known limitations, and how to run it.
+
+## Citation
+
+This artifact is archived on Zenodo. Cite it via the concept DOI
+[10.5281/zenodo.24132545](https://doi.org/10.5281/zenodo.24132545),
+which always resolves to the latest version. Citation metadata is in
+[CITATION.cff](CITATION.cff).
 
 ## License
 
