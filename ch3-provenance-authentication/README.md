@@ -17,13 +17,17 @@ no real user data.
 
 ## Layout
 
-- `code/policy/` — the provenance/location-based authentication policy
-  engine: `run_resultv3.py` is the latest version (`run_result.py`,
-  `#run_resultv0.py`, `#run_resultv1.py` are earlier iterations), plus
-  the request data and lookup databases it reads.
-- `code/ml/` — the decision-tree baseline:
-  `ML-DecisionTreeClassifier.ipynb` and `ML-KFold.ipynb` with their
-  workbooks.
+- `code/ml/` — **the dissertation pipeline, self-contained**:
+  `run_result.py` is the policy engine behind the chapter's numbers —
+  it reads `database.xlsx` (synthesized users) and `dataset.xlsx`
+  (5,000 synthesized requests) and writes `result.xlsx` (the requests
+  plus the policy's Allow / Allow with condition / Deny label), which
+  `ML-DecisionTreeClassifier.ipynb` and `ML-KFold.ipynb` then read for
+  the decision-tree comparison.
+- `code/policy/` — later development iterations of the policy engine
+  (`run_resultv3.py` is the newest: 3,000-request runs on an extended
+  schema; `#run_resultv0.py` / `#run_resultv1.py` are earlier), kept as
+  history together with the data they read.
 - `data-prep/` — reserved; request synthesis artifacts currently live
   with the policy code.
 - `config/` — reserved; parameters are constants in the scripts.
@@ -34,15 +38,11 @@ no real user data.
 ## How to run
 
 ```bash
-cd code/policy
-python run_resultv3.py      # policy evaluation; writes result.xlsx
-                            # (requests only) and result_test.xlsx /
-                            # result_test2.xlsx (requests + the policy's
-                            # "result" label column)
-
-cd ../ml
-cp ../policy/result_test.xlsx result.xlsx   # notebooks read ./result.xlsx
-jupyter notebook            # decision-tree comparison notebooks
+cd code/ml
+python run_result.py        # regenerates result.xlsx — the 5,000
+                            # labeled requests behind the chapter
+jupyter notebook            # ML-DecisionTreeClassifier / ML-KFold,
+                            # both read ./result.xlsx
 ```
 
 Requires `openpyxl`, `pandas`, `scikit-learn`, `jupyter` (see the
@@ -53,17 +53,21 @@ repository-level `requirements.txt`).
 - The policy scripts load `dataset.xlsx` while the file on disk is
   `DataSet.xlsx` — fine on Windows (case-insensitive), fails on Linux;
   rename or symlink there.
-- The ML notebooks load `result.xlsx` and expect it to carry the
-  policy's `result` label column — but `run_resultv3.py` writes the
-  labeled output to `result_test.xlsx` (its `result.xlsx` holds the
-  requests only). Copy `result_test.xlsx` to `code/ml/result.xlsx`
-  before running the notebooks, as shown above.
+- `run_resultv3.py` (the later iteration in `code/policy/`) writes its
+  labeled output to `result_test.xlsx`, not `result.xlsx`, and its
+  labels are **not** the chapter's training data — only
+  `code/ml/run_result.py` regenerates that.
 
 ## Status
 
-✅ Policy engine, decision-tree notebooks, and synthesized data migrated
-as-is. ✅ Verified end-to-end under the pinned environment (Python 3.12,
-repository `requirements.txt`): `run_resultv3.py` runs to completion on
-the committed data, and both ML notebooks execute on its labeled output.
-🚧 Still to confirm: that `run_resultv3.py` is the exact version behind
-the dissertation numbers.
+✅ Canonical pipeline confirmed by regeneration under the pinned
+environment (Python 3.12, repository `requirements.txt`):
+`code/ml/run_result.py` reproduces the committed `result.xlsx` — 5,000
+rows with identical labels (Allow 3,784 / Allow with condition 100 /
+Deny 1,116); the only differences are 511 cells where the committed
+original still carries the old "Online transection" spelling that
+`dataset.xlsx` has since corrected. Both notebooks rerun on the
+committed `result.xlsx` and reproduce their stored accuracies (decision
+tree 0.82 stored vs 0.84 rerun; the k-fold folds match closely,
+including the low final fold ≈0.64). The later `run_resultv3.py` also
+runs end-to-end on its own data.
