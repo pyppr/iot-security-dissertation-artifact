@@ -1,0 +1,54 @@
+if date.strftime("%A") == 'Monday' then from_dataset("db_name", 'Monday', email: email) 
+elsif date.strftime("%A") == 'Tuesday' then from_dataset("db_name", 'Tuesday', email: email) 
+elsif date.strftime("%A") == 'Wednesday' then from_dataset("db_name", 'Wednesday', email: email) 
+elsif date.strftime("%A") == 'Thursday' then from_dataset("db_name", 'Thursday', email: email) 
+elsif date.strftime("%A") == 'Friday' then from_dataset("db_name", 'Friday', email: email) 
+else ' ' end
+
+
+if from_dataset("db_name", 'model', email: email) == 'portable' then from_dataset("db_name", 'mac_address', email: email) 
+elsif from_dataset("db_name", 'Customer Management', email: email) == 'FALSE' and from_dataset("db_name", 'Online transection', email: email) == 'FALSE' and from_dataset("db_name", 'model', email: email) == 'non-portable' then from_dataset("db_location", 'mac_address', branch: location,  app: 'Front') 
+elsif from_dataset("db_name", 'User Management: email) == 'FALSE' and from_dataset("db_name", 'Schedule Management', email: email) == 'FALSE' and from_dataset("db_name", 'Vendor Management', email: email) == 'FALSE' and from_dataset("db_name", 'Materials Management', email: email) == 'FALSE' and from_dataset("db_name", 'Warehouse and inventory', email: email) == 'FALSE' and from_dataset("db_name", 'Purchasing', email: email) == 'FALSE' and from_dataset("db_name", 'model', email: email) == 'non-portable' then from_dataset("db_location", 'mac_address', branch: location,  app: 'Front') 
+else ' ' end
+
+
+if from_dataset("db_name", 'model', email: email) == 'portable' then from_dataset("db_name", 'mac_address', email: email) 
+elsif from_dataset("db_name", 'Customer Management', email: email) == 'FALSE' and from_dataset("db_name", 'Online transection', email: email) == 'FALSE' and from_dataset("db_name", 'model', email: email) == 'non-portable' then from_dataset("db_location", 'mac_address', branch: location,  app: 'Front') 
+else ' ' end
+
+if from_dataset("db_name", 'model', email: email) == 'portable' then from_dataset("db_name", 'mac_address', email: email) 
+elsif from_dataset("db_name", 'model', email: email) == 'non-portable' and from_dataset("db_user_application", 'type', email: email, application:application) == 'back' then from_dataset("db_location", 'mac_address', branch: location, app: 'Back') 
+elsif from_dataset("db_name", 'model', email: email) == 'non-portable' and from_dataset("db_user_application", 'type', email: email, application:application) == 'front' then from_dataset("db_location", 'mac_address', branch: location, app: 'Front') 
+else ' ' end
+
+
+
+
+from_dataset("db_user_application", 'application', email: email)
+
+from_dataset("db_name", 'User Management', email: email) == 'TRUE'
+from_dataset("db_name", 'Schedule Management', email: email) == 'TRUE'
+from_dataset("db_name", 'Vendor Management', email: email) == 'TRUE'
+from_dataset("db_name", 'Materials Management', email: email) == 'TRUE'
+from_dataset("db_name", 'Warehouse and inventory', email: email) == 'TRUE'
+from_dataset("db_name", 'Purchasing', email: email) == 'TRUE'
+from_dataset("db_name", 'Customer Management', email: email) == 'TRUE'
+from_dataset("db_name", 'Online transection', email: email) == 'TRUE'
+a = {}
+if from_dataset("db_name", 'User Management', email: email) == 'TRUE' then a = a + 'User Management'
+end
+
+
+
+from_dataset("db_location_address", 'street_address', branch: location)
+from_dataset("db_location_address", 'postal', branch: location)
+from_dataset("db_location_address", 'country', branch: location)
+from_dataset("db_location_address", 'state', branch: location)
+from_dataset("db_location_address", 'latitude', branch: location)
+from_dataset("db_location_address", 'longtitude', branch: location)
+
+if from_dataset("db_name", 'model', email: email) == 'portable' then from_dataset("db_name", 'mac_address', email: email)  elsif from_dataset("db_name", 'model', email: email) == 'non-portable' and from_dataset("db_user_application", 'type', email: email, application:application) == 'back' then from_dataset("db_location", 'mac_address', branch: location, app: 'Back')  elsif from_dataset("db_name", 'model', email: email) == 'non-portable' and from_dataset("db_user_application", 'type', email: email, application:application) == 'front' then from_dataset("db_location", 'mac_address', branch: location, app: 'Front')  else ' ' end
+
+
+if from_dataset("db_name", 'model', email: email) == 'portable' then from_dataset("db_name", 'mac_address', email: email)  
+elsif from_dataset("db_name", 'model', email: email) == 'non-portable' then from_dataset("db_location", 'mac_address', branch: location)  else ' ' end

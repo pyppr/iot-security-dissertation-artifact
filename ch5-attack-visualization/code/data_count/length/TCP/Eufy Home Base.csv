@@ -1,0 +1,16 @@
+value,count,round
+42,3,round2
+60,1,round1
+60,4,round2
+62,200,round1
+62,245,round2
+62,296,round3
+78,2812,round1
+78,3126,round2
+78,2610,round3
+199,2,round1
+199,1,round2
+199,2,round3
+219,1,round1
+219,2,round2
+219,2,round3

@@ -1,0 +1,441 @@
+<!--
+=========================================================
+* Paper Dashboard 2 - v2.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/paper-dashboard-2
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <script src="https://unpkg.com/d3-3d/build/d3-3d.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <!-- Load plotly.js into the DOM -->
+  <script src='https://cdn.plot.ly/plotly-2.18.2.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+  <title>
+    Graph
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="">
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="./2d.html">2D Graph</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="./3d.html">3D Graph</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header ">
+              <h6 class="card-title">Setting</h6>
+            </div>
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-2 col-md-2">
+                  <label for="protocol">Choose a protocol:</label>
+                  <select name="protocol" id="protocol" class="form-control">
+                    <option value="HTTP" selected>HTTP</option>
+                    <option value="TCP">TCP</option>
+                    <option value="UDP">UDP</option>
+                  </select>
+                </div>
+                <div class="col-2 col-md-2">
+                  <label for="devices">Choose a device:</label>
+                  <select name="devices" id="devices" class="form-control">
+                    <option value="ArloQ Camera.csv">ArloQ Camera</option>
+                    <option value="Atomi Coffee Maker.csv">Atomi Coffee Maker</option>
+                    <option value="Borun Camera.csv">Borun Camera</option>
+                    <option value="Eufy Home Base.csv">Eufy Home Base</option>
+                    <option value="Globe Lamp.csv">Globe Lamp</option>
+                    <option value="Gosund Plug - Roomba.csv">Gosund Plug - Roomba</option>
+                    <option value="HeimVision Camera.csv">HeimVision Camera</option>
+                    <option value="Netatmo Camera.csv">Netatmo Camera</option>
+                    <option value="Philips Hue Bridge.csv">Philips Hue Bridge</option>
+                    <option value="Ring Basestation.csv">Ring Basestation</option>
+                    <option value="SimCam.csv">SimCam</option>
+                  </select>
+                </div>
+                <div class="col-1 col-md-1">
+                  <label for="cx">Choose x:</label>
+                  <select name="cx" id="cx" class="form-control">
+                    <option value="time" selected>Time</option>
+                    <option value="src">Source Address</option>
+                    <option value="srcport">Source Port</option>
+                    <option value="dst">Destination Address</option>
+                    <option value="dstport">Destination Port</option>
+                    <option value="length">Packet Size</option>
+                    <option value="protocols">Protocol Type</option>
+                    <option value="info">Info</option>
+                    <option value="round">Round</option>
+                  </select>
+                </div>
+
+                <div class="col-1 col-md-1">
+                  <label for="cy">Choose y:</label>
+
+                  <select name="cy" id="cy" class="form-control">
+                    <option value="time">Time</option>
+                    <option value="src">Source Address</option>
+                    <option value="srcport" selected>Source Port</option>
+                    <option value="dst">Destination Address</option>
+                    <option value="dstport">Destination Port</option>
+                    <option value="length">Packet Size</option>
+                    <option value="protocols">Protocol Type</option>
+                    <option value="info">Info</option>
+                    <option value="round">Round</option>
+                  </select>
+                </div>
+                <div class="col-1 col-md-1">
+                  <label for="cz">Choose z:</label>
+
+                  <select name="cz" id="cz" class="form-control">
+                    <option value="time">Time</option>
+                    <option value="src">Source Address</option>
+                    <option value="srcport">Source Port</option>
+                    <option value="dst">Destination Address</option>
+                    <option value="dstport">Destination Port</option>
+                    <option value="length" selected>Packet Size</option>
+                    <option value="protocols">Protocol Type</option>
+                    <option value="info">Info</option>
+                    <option value="round">Round</option>
+                  </select>
+                </div>
+                <div class="col-1 col-md-1">
+                  <label for="mode">Choose a graph type:</label>
+                  <select name="mode" id="mode" class="form-control">
+                    <option value="lines" selected>Lines</option>
+                    <option value="markers">Dots</option>
+                  </select>
+                </div>
+                <div class="col-1 col-md-1">
+                  <label for="dot_size">Choose a dot size:</label>
+                  <select name="dot_size" id="dot_size" class="form-control">
+                    <option value="100" >X 0.01</option>
+                    <option value="50" >X 0.02</option>
+                    <option value="10" >X 0.1</option>
+                    <option value="2" >X 0.5</option>
+                    <option value="1" >X 1</option>
+                    <option value="0.5" >X 2</option>
+                    <option value="0.1" selected>X 10</option>
+                    <option value="0.02" >X 50</option>
+                    <option value="0.01" >X 100</option>
+                  </select>
+                </div>
+                <div class="col-1 col-md-1">
+                  <div type="submit" class="btn btn-primary" id="draw1">Draw Graph 1</div>
+                </div>
+                <div class="col-1 col-md-1">
+                  <div type="submit" class="btn btn-dark" id="draw2">Draw Graph 2</div>
+                </div>
+              </div>
+              <!-- <div class="row">
+                <div class="col-2 col-md-2">
+                  <div>
+                    <label>Sizeref:</label>
+                    <input id="sizeref-slider" type="range" min="1" max="10" step="1" value="1">
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card ">
+            <div class="card-header ">
+              <h5 class="card-title">Graph 1</h5>
+            </div>
+            <div class="card-body ">
+              <div id=graph1></div>
+            </div>
+            <div class="card-footer">
+              <hr>
+              <p id="f1"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card ">
+            <div class="card-header ">
+              <h5 class="card-title">Graph 2</h5>
+            </div>
+            <div class="card-body ">
+              <div id=graph2></div>
+            </div>
+            <div class="card-footer">
+              <hr>
+              <p id="f2"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    function drawGraph(graphName, graphId, footerId) {
+      var protocol = d3.select("#protocol").node().value;
+      var devices = d3.select("#devices").node().value;
+      var graphMode = d3.select("#mode").node().value;
+      var grdot_size = parseFloat(d3.select("#dot_size").node().value);
+      var cx = d3.select("#cx").node().value;
+      var cy = d3.select("#cy").node().value;
+      var cz = d3.select("#cz").node().value;
+      var deviceName = { 'ArloQ Camera.csv': "ArloQ Camera", 'Atomi Coffee Maker.csv': "Atomi Coffee Maker", 'Borun Camera.csv': "Borun Camera", 'Eufy Home Base.csv': "Eufy Home Base", 'Globe Lamp.csv': "Globe Lamp", 'Gosund Plug - Roomba.csv': "Gosund Plug - Roomba", 'HeimVision Camera.csv': "HeimVision Camera", 'Netatmo Camera.csv': "Netatmo Camera", 'Philips Hue Bridge.csv': "Philips Hue Bridge", 'Ring Basestation.csv': "Ring Basestation", 'SimCam.csv': "SimCam" };
+      var axisName = { 'time': "Time", 'src': "Source Address", 'srcport': "Source Port", 'dst': "Destination Address", 'dstport': "Destination Port", 'length': "Packet Size", 'protocols': "Protocol Type", 'info': "Info", 'round': "Round" };
+
+      var title = "";
+      title = title.concat(protocol, " ", deviceName[devices]);
+      var filename = "";
+      filename = filename.concat("data_aggregation/", protocol, "/", devices);
+      // console.log(filename);
+      var footerText = "";
+      footerText = footerText.concat("Protocol: ", protocol, "<br>Device: ", deviceName[devices], "<br>X: ", axisName[cx], "<br>Y: ", axisName[cy], "<br>Z: ", axisName[cz],);
+      d3.select(footerId).html(footerText)
+      d3.csv(filename, function (err, rows) {
+        function unpackWithCon(rows, key, key_con1, con1, key_con2, con2) {
+          return rows.map(function (row) {
+            if (row[key_con1] == con1 && row[key_con2] == con2) {
+            // if (row[key_con] == con && parseInt(row['no.']) < 100000) {
+              // console.log(row['no.'])
+              return row[key];
+            }
+          });
+        }
+        function unpackAll(rows, key) {
+          return rows.map(function (row) {
+            return row[key];
+          });
+        }
+        var rounds = ['round1','round2','round3'];
+        // var rounds = ['round1','round2','round3'];
+        var data_types = ['attacker', 'victim', 'other'];
+        // attack vs victim vs others use shape
+        var shape = ['diamond','circle','x']; 
+        var line_type = ['solid', 'dash', 'dot']
+        // continues data use colors 
+        var colors = ['#00008B','#1E90FF','#00FFFF'];
+        // attack_r1 vic_r1 oth_r1 ... oth_r3
+        // var colorsForLines = ['#d73027','#f46d43','#fdae61', '#2166ac','#4393c3','#92c5de', '#8c510a','#bf812d','#dfc27d'];
+        var colorsForLines = ['#d73027','#2166ac','#4d4d4d', '#f46d43','#4393c3','#878787', '#fdae61','#92c5de','#bababa'];
+        var data = [];
+        
+
+        data_types.forEach((data_type, data_type_index) => {
+          rounds.forEach((round, round_index) => {
+            var countArray = unpackWithCon(rows, 'size', 'round', round, 'is_attacker', data_type).map(Number);
+            // console.log(countArray)
+            var racountArray = unpackWithCon(rows, 'size', 'round', round, 'is_attacker', data_type).map(Number);
+            // console.log(racountArray)
+            if (protocol == 'UDP') {
+              countArray = countArray.map(value => isNaN(value) ? 0 : value);
+              var ratio = 1;
+              // var ratio = Math.max.apply(Math, racountArray) / 1000;
+              countArray = countArray.map(function (v) {
+                return Math.ceil(v / ratio)+20;
+              });
+              if (data_type == 'other') {
+                // console.log(countArray)
+                countArray = countArray.map(function (v) {
+                return Math.ceil(v / 2);
+              });
+                // console.log(countArray)
+              }
+            }
+            else { 
+              var ratio = 20
+              if (data_type == 'other') {
+                ratio = 10
+              }
+              countArray = countArray.map(function (v) {
+                return Math.round(v * ratio);
+              });
+            }
+
+            var trace = {}
+            if (graphMode == 'lines') {
+              trace = {
+                x: unpackWithCon(rows, cx, 'round', round, 'is_attacker', data_type), y: unpackWithCon(rows, cy, 'round', round, 'is_attacker', data_type), z: unpackWithCon(rows, cz, 'round', round, 'is_attacker', data_type),
+                type: 'scatter3d',
+                mode: graphMode,
+                opacity: 1,
+                line: {
+                  width: 6,
+                  reversescale: false,
+                  color: colorsForLines[round_index * 3 + data_type_index],
+                  // dash:line_type[data_type_index],
+                },
+                connectgaps: true,
+                hovertemplate: '<br><b>X</b>: %{x}<br>' +
+                  '<br><b>Y</b>: %{y}<br>' +
+                  '<br><b>Z</b>: %{z}<br>' +
+                  '<br><b>Count</b>: <b>%{text}</b>',
+                text: unpackWithCon(rows, 'size', 'round', round, 'is_attacker', data_type).map(Number),
+                marker: {
+                  size: countArray,
+                  symbol: shape[data_type_index],
+                  color: colors[round_index],
+                  sizemode: 'area',
+                  opacity: 1,
+                  sizeref: 1,
+                },
+                name: data_type.concat(" ", round, " (", racountArray.filter(x => !isNaN(x)).length.toLocaleString(),")"),
+              };
+
+            }
+            else {
+              trace = {
+                x: unpackWithCon(rows, cx, 'round', round, 'is_attacker', data_type), y: unpackWithCon(rows, cy, 'round', round, 'is_attacker', data_type), z: unpackWithCon(rows, cz, 'round', round, 'is_attacker', data_type),
+                type: 'scatter3d',
+                mode: graphMode,
+                // opacity: 1,
+                hovertemplate: '<br><b>X</b>: %{x}<br>' +
+                  '<br><b>Y</b>: %{y}<br>' +
+                  '<br><b>Z</b>: %{z}<br>' +
+                  '<br><b>Count</b>: <b>%{text}</b>',
+                text: unpackWithCon(rows, 'size', 'round', round, 'is_attacker', data_type).map(Number),
+                marker: {
+                  size: countArray,
+                  symbol: shape[data_type_index],
+                  color: colorsForLines[round_index * 3 + data_type_index],
+                  // color: colors[round_index],
+                  sizemode: 'area',
+                  opacity: 1,
+                  sizeref: grdot_size,
+              line: {
+                  color: 'rgba(0, 0, 0, 1)',
+                  width: 0.0001,
+                  opacity: 0.01,
+              },
+                },
+                name: data_type.concat(" ", round, " (", racountArray.filter(x => !isNaN(x)).length.toLocaleString(),")"),
+              };
+            }
+            data.push(trace);
+          });
+        });
+        
+
+
+        var layout = {
+          // scene_xaxis = dict(exponentformat= "none", 
+          //                            separatethousands= True,),
+          scene: {
+            xaxis: { title: axisName[cx],tickformat: "digits"},
+            yaxis: { title: axisName[cy],tickformat: "digits"},
+            zaxis: { title: axisName[cz],tickformat: "digits"},
+          },
+          legend: {
+            x: 0,
+            y: 1,
+            traceorder: 'normal',
+            itemsizing: 'constant',
+            font: {
+              family: 'sans-serif',
+              size: 12,
+              color: '#000'
+            },
+            bgcolor: '#E2E2E2',
+            bordercolor: '#FFFFFF',
+            borderwidth: 2
+          },
+          autosize: true,
+          // width: 800,
+          height: 800,
+          title: title,
+          margin: {
+            l: 0,
+            r: 0,
+            b: 20,
+            t: 25
+          },
+        // sliders: [{
+        //   currentvalue: {prefix: 'Sizeref: '},
+        //   pad: {t: 50},
+        //   len: 0.9,
+        //   x: 0.1,
+        //   y: 0,
+        //   steps: Array.from({length: 20}, (_, i) => ({
+        //     method: 'relayout',
+        //     args: [{'marker.sizeref': (i+1)/10}],
+        //     label: `${(i+1)/10}`,
+        //   })),
+        // }]      
+        };
+        if (rows.length == 0) {
+          d3.select(graphId).html("<h5>No Data</h5>")
+        } else {
+          d3.select(graphId).html("")
+          Plotly.newPlot(graphName, data, layout);
+      //     var sizerefSlider = document.getElementById('sizeref-slider');
+      // sizerefSlider.addEventListener('input', function() {
+      //   var sizeref = parseFloat(this.value);
+      //   var update = {
+      //     'marker.sizeref': sizeref
+      //   };
+      //   Plotly.relayout('graph1', update);
+      //   // Plotly.relayout('graph2', update);
+      // });
+        }
+      });
+    }
+
+    d3.select("#draw1").on("click", function (d) {
+      drawGraph("graph1", "#graph1", "#f1");
+    })
+
+    d3.select("#draw2").on("click", function (d) {
+      drawGraph("graph2", "#graph2", "#f2");
+    })
+
+  </script>
+  <!--   Core JS Files   -->
+  <script src="./assets/js/core/jquery.min.js"></script>
+  <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./assets/js/core/bootstrap.min.js"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <!-- <script src="./assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script> -->
+
+</body>
+
+</html>

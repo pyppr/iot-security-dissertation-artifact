@@ -1,0 +1,94 @@
+﻿type,name,vendor,nupnp,ssdp_type
+Hubs,2X Amazone Echo,Amazon Technologies Inc.,,NOTIFY * HTTP/1.1
+Hubs,Apple HomePod,"Apple, Inc.",,NOTIFY * HTTP/1.1
+Cameras,August Doorbell Cam,August Home,,NOTIFY * HTTP/1.1
+Cameras,Belkin Netcam,Belkin International Inc.,,NOTIFY * HTTP/1.1
+Energy Management,Belkin WeMo Link,Belkin International Inc.,,NOTIFY * HTTP/1.1
+Appliances,Bezeq smarthome,Bezeq Group,,NOTIFY * HTTP/1.1
+Appliances,Bose SoundTouch 10,Bose Corporation,,NOTIFY * HTTP/1.1
+Hubs,Caseta Wireless Hub,"Lutron Electronics Co., Inc",,NOTIFY * HTTP/1.1
+Appliances,Chamberlain myQ Garage Opener,"The Chamberlain Group, Inc. ",,NOTIFY * HTTP/1.1
+Cameras,D-Link DCS-5009L Camera,D‑Link Ltd,,NOTIFY * HTTP/1.1
+Cameras,Foscam,Foscam Inc,,NOTIFY * HTTP/1.1
+Appliances,Google Home,Google,,NOTIFY * HTTP/1.1
+Appliances,3X Google Home Mini,Google,,NOTIFY * HTTP/1.1
+Hubs,Google OnHub,Google,,NOTIFY * HTTP/1.1
+Appliances,Harman Kardon Invoke,HARMAN International,,NOTIFY * HTTP/1.1
+Hubs,Insteon Hub,Insteon,,NOTIFY * HTTP/1.1
+Appliances,iRobot,iRobot Corporation,,NOTIFY * HTTP/1.1
+Energy Management,Koogeek Lightbulb,Koogeek Inc,,NOTIFY * HTTP/1.1
+Energy Management,lifiLab,LIFI LABS MANAGEMENT PTY LTD,,NOTIFY * HTTP/1.1
+Hubs,Logitech Harmony Hub, Logitech,,NOTIFY * HTTP/1.1
+Cameras,Logitech Logi Circle, Logitech,,NOTIFY * HTTP/1.1
+Cameras,2X Motorola Hubble,Hubble Connected,,NOTIFY * HTTP/1.1
+Cameras,NestCam,Nest Labs Inc.,,NOTIFY * HTTP/1.1
+Health-Monitor,NestDetector,Nest Labs Inc.,,NOTIFY * HTTP/1.1
+Cameras,Nest Camera,Nest Labs Inc.,,NOTIFY * HTTP/1.1
+Cameras,Nest Cam IQ,Nest Labs Inc.,,NOTIFY * HTTP/1.1
+Appliances,Nest Guard,Nest Labs Inc.,,NOTIFY * HTTP/1.1
+Cameras,Netgear Arlo Camera,Arlo,,NOTIFY * HTTP/1.1
+Hubs,Philips HUE Hub,Philips Lighting BV,None,NOTIFY * HTTP/1.1
+Hubs,Philips Hue Bridge,Philips Lighting BV,None,NOTIFY * HTTP/1.1
+Cameras,Piper NV,"Icontrol Networks Canada, Inc",,NOTIFY * HTTP/1.1
+Cameras,Provision ISR,Provision-ISR International,,NOTIFY * HTTP/1.1
+Appliances,Roku 4,"Roku, Inc",,NOTIFY * HTTP/1.1
+Appliances,Roomba,iRobot Corporation,,NOTIFY * HTTP/1.1
+Cameras,samsung smart home camera,SAMSUNG,,NOTIFY * HTTP/1.1
+Hubs,Securifi Almond,Securifi,,NOTIFY * HTTP/1.1
+Cameras,Sonos,Sonos Inc,,NOTIFY * HTTP/1.1
+Energy Management,TP-Link Smart WiFi LED Bulb,"TP-LINK TECHNOLOGIES CO.,LTD.",,NOTIFY * HTTP/1.1
+Energy Management,2X TP-Link WiFi Plug,"TP-LINK TECHNOLOGIES CO.,LTD.",,NOTIFY * HTTP/1.1
+Hubs,Wink 2 Hub,WINK LABS INC,,NOTIFY * HTTP/1.1
+Appliances,Withings Home,Withings,,NOTIFY * HTTP/1.1
+Cameras,Wyze Cam,Wyze Labs,,NOTIFY * HTTP/1.1
+Appliances,Smart Things,"SmartThings, Inc",,NOTIFY * HTTP/1.1
+Appliances,Netatmo Welcome,Netatmo,,NOTIFY * HTTP/1.1
+Cameras,TP-Link Day Night camera,"TP-LINK TECHNOLOGIES CO.,LTD.",,NOTIFY * HTTP/1.1
+Cameras,Samsung SmartCam,SAMSUNG,,NOTIFY * HTTP/1.1
+Cameras,Dropcam,Dropcam,,NOTIFY * HTTP/1.1
+Cameras,"Insteon Camera, wifi",Insteon,,NOTIFY * HTTP/1.1
+Cameras,"Insteon Camera, wired",Insteon,,NOTIFY * HTTP/1.1
+Health-Monitor,Withings Smart Monitor,Withings,,NOTIFY * HTTP/1.1
+Energy Management,Belkin Wemo switch,Belkin International Inc.,,NOTIFY * HTTP/1.1
+Energy Management,TP-Link Smart plug,"TP-LINK TECHNOLOGIES CO.,LTD.",,NOTIFY * HTTP/1.1
+Appliances,iHome,SDI Technologies Inc,,NOTIFY * HTTP/1.1
+Energy Management,Belkin wemo motion sensor,Belkin International Inc.,,NOTIFY * HTTP/1.1
+Health-Monitor,NEST Protect smoke alarm,Nest Labs Inc.,,NOTIFY * HTTP/1.1
+Health-Monitor,Netatmo weather station,Netatmo,,NOTIFY * HTTP/1.1
+Health-Monitor,Withings Smart scale,Withings,,NOTIFY * HTTP/1.1
+Health-Monitor,Blipcare Blood Pressure meter,Blipcare,,NOTIFY * HTTP/1.1
+Health-Monitor,Withings Aura smart sensor,Withings,,NOTIFY * HTTP/1.1
+Energy Management,LiFX Smart Bulb,LIFI LABS MANAGEMENT PTY LTD,,NOTIFY * HTTP/1.1
+Appliances,Triby Speaker Smart Speaker,Invoxia,,NOTIFY * HTTP/1.1
+Appliances,PIX-STAR Photo-frame,"AMPAK Technology, Inc.",,NOTIFY * HTTP/1.1
+Appliances,HP Printer,Hewlett Packard,,NOTIFY * HTTP/1.1
+Cameras,Nest Dropcam,Nest Labs Inc.,,NOTIFY * HTTP/1.1
+Energy Management,Yeelink Smart Light Bulb,YEELIGHT,,NOTIFY * HTTP/1.1
+Non-IOT,Samsung Galaxy Tab,SAMSUNG,,M-SEARCH * HTTP/1.1
+Non-IOT,MacBook4,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,IPhone,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,MacBook/Iphone,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,Lg Smartphone,LG Electronics,,M-SEARCH * HTTP/1.1
+Non-IOT,Nexus 5x Smartphone,LG Electronics,,M-SEARCH * HTTP/1.1
+Non-IOT,Apple Macbook,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,Xiaomi Smartphone,Xiaomi,,M-SEARCH * HTTP/1.1
+Non-IOT,Macbook1,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,Macbook2,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,Samsung s7,SAMSUNG,,M-SEARCH * HTTP/1.1
+Non-IOT,Xiaomi mi5,Xiaomi,,M-SEARCH * HTTP/1.1
+Non-IOT,Galaxy-A7-2017 Smartphone,SAMSUNG,,M-SEARCH * HTTP/1.1
+Non-IOT,Lenovo Win10 laptop,Lenovo,,M-SEARCH * HTTP/1.1
+Non-IOT,LG G3 Smartphone,LG Electronics,,M-SEARCH * HTTP/1.1
+Non-IOT,Asus ZenPad Tablet,ASUSTek COMPUTER INC.,,M-SEARCH * HTTP/1.1
+Non-IOT,Dell Win7 laptop,Dell,,M-SEARCH * HTTP/1.1
+Non-IOT,Samsung s5 Smartphone,SAMSUNG,,M-SEARCH * HTTP/1.1
+Non-IOT,Android samsung,SAMSUNG,,M-SEARCH * HTTP/1.1
+Non-IOT,Apple iPhone,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,Apple ipad,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,xiaomi A2,Xiaomi,,M-SEARCH * HTTP/1.1
+Non-IOT,Dell Laptop win 10,Dell,,M-SEARCH * HTTP/1.1
+Non-IOT,Mac laptop,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,Xiaomi smartphone,Xiaomi,,M-SEARCH * HTTP/1.1
+Non-IOT,Macbook3,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,iPad,"Apple, Inc.",,M-SEARCH * HTTP/1.1
+Non-IOT,Iphone,"Apple, Inc.",,M-SEARCH * HTTP/1.1

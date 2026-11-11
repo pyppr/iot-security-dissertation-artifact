@@ -1,0 +1,37 @@
+{
+  "_source": "Full-precision threshold values from the original analysis workbook (data/compare.xlsx, column N = average over the normal sample), matching Table III of the published paper (rounded there). Thresholds are the mean of each parameter over normal-operation Dstat samples, per Algorithm Building-RDS line 17.",
+  "_selected_indicators": {
+    "Client": ["DISK Read"],
+    "Controller": ["DISK Read", "I/O Read"],
+    "DB server": ["MEMORY Usage"]
+  },
+  "thresholds": {
+    "Client": {
+      "CPU Usage": 26.82498131009023,
+      "MEMORY Usage": 1132473831.228666,
+      "DISK Read": 12896.49760943015,
+      "DISK Write": 15947.44617595753,
+      "I/O Read": 0.303327093704543,
+      "I/O Write": 551.831106964237,
+      "Power Consumption": 4.194412951383054
+    },
+    "Controller": {
+      "CPU Usage": 26.8262687603019,
+      "MEMORY Usage": 1152660987.247332,
+      "DISK Read": 13190.35294525896,
+      "DISK Write": 27141.82590439837,
+      "I/O Read": 0.2017697579595732,
+      "I/O Write": 513.7125184349787,
+      "Power Consumption": 4.052377184002776
+    },
+    "DB server": {
+      "CPU Usage": 55.27645896867202,
+      "MEMORY Usage": 2157315116.440255,
+      "DISK Read": 883.5697255336845,
+      "DISK Write": 31244914.59828112,
+      "I/O Read": 0.03370182977543665,
+      "I/O Write": 580.0091142223455,
+      "Power Consumption": 4.823557873579152
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# Local working materials: papers, raw chapter sources (.docx/.tex), figures,
+# and anything else you want to stage privately. Never committed.
+resources/
+
+# Raw datasets staged locally by the data-prep scripts (scripts are committed,
+# raw data is not; see each chapter's README for the download source).
+ch*/data/raw/
+
+# Ch5: multi-GB per-packet CSVs derived from the CIC IoT Dataset 2022 —
+# regenerated locally, never committed (the small data_count/ CSVs ARE committed).
+ch5-attack-visualization/code/data/
+ch5-attack-visualization/code/data_aggregation/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

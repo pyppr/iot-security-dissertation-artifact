@@ -1,0 +1,10 @@
+IF USER_EXISTS(username) THEN
+    password_hash=HASH(password)
+    IS_VALID=CHECK_CREDENTIALS_IN_STORE(username, password_hash)
+    IF NOT IS_VALID THEN
+        RETURN Error("Invalid Username or Password!")
+    ENDIF
+ELSE
+   RETURN Error("Invalid Username or Password!")
+ENDIF
+

@@ -1,0 +1,17 @@
+input:  data is a set of data such that 
+        data =  Vendor, MAC address, Open port, mDNS, DNS, 
+output: the information of device in the network
+
+if Vendor(data) and is_sub_set_of_DNS(data) and is_sub_set_of_mDNS(data) and is_sub_set_of_open_port(data) then
+    return the information of device in the network
+else return "No data"
+
+
+// WS-Discovery = Web Services Dynamic Discovery 
+    "http://schemas.xmlsoap.org/ws/2005/04/discovery/adhoc". 
+
+// SSDP (UPnP) = The Simple Service Discovery Protocol (SSDP) is part of the Universal Plug and Play (UPnP)
+    Network Package
+
+// NUPNP = NUPNP is a comparatively simple protocol that uses a central registry to discover local devices.
+    NUPNP is "not a standard protocol." It is being used by Philips for discovery of their Hue Lighting gateway devices

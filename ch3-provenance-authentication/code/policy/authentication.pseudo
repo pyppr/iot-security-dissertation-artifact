@@ -1,0 +1,154 @@
+function check_credential(username,password) do
+    if user_exists(username) do 
+        password_hash=hash(password)
+        if check_credentials_in_database(username,password_hash) do 
+            return true
+        end else do 
+            return false
+        end
+    end else do 
+        return false
+    end
+end
+
+
+
+function check_system(system,username) do
+    system_in_ProvDB = get_system_in_provenance_database(username)
+    if system == system_in_ProvDB do 
+        return true
+    end else do 
+        return false
+    end
+end 
+
+function check_MAC_address(MAC,username) do
+    MAC_in_ProvDB = get_MAC_in_provenance_database(username)
+    if MAC IN MAC_in_ProvDB do 
+        return true
+    end else do 
+        return false
+    end
+end 
+
+function check_MAC_address_exists(MAC) do
+    all_MAC_in_ProvDB = get_all_MAC_in_provenance_database()
+    if MAC IN all_MAC_in_ProvDB do 
+        return true
+    end else do 
+        return false
+    end
+end 
+
+function check_device_location(location,MAC) do
+    device_location = get_location_in_provenance_database(MAC)
+    if location == device_location do 
+        return true
+    end else do 
+        return false
+    end
+end 
+
+function check_user_location(location,username) do
+    user_location = get_schedule_location(username)
+    if location == user_location do 
+        return true
+    end else do 
+        return false
+    end
+end
+
+function authentication_with_system(authentication_requiest) do
+    if device_can_carry(Model) do 
+        if check_MAC_address(MAC,username) and check_system(system,username) do 
+            if check_user_location(location,username) do 
+                return "Allow"
+            end else do 
+                return "Deny"
+            end
+        end else if not check_MAC_address_exists(MAC) and check_system(system,username) do 
+            if check_user_location(location,username) do 
+                return "Allow"
+            end else do 
+                return "Deny"
+            end
+        end else do 
+            return "Deny"
+        end
+    end else do 
+        if check_MAC_address(MAC,username) or check_MAC_address_exists(MAC) and check_system(system,username) do 
+            if check_device_location(location,MAC) and check_user_location(location,username) do 
+                return "Allow"
+            end else if not check_device_location(location,MAC) and check_user_location(location,username) do 
+                if check_user_location(location,username) do 
+                    return "Allow with conditions"
+                end else do 
+                    return "Deny"
+                end
+            end else do 
+                return "Deny"
+            end
+        end 
+    end
+end 
+
+
+function authentication_without_system(authentication_requiest) do
+    if device_can_carry(Model) do 
+        if check_MAC_address(MAC,username) do 
+            if check_user_location(location,username) do 
+                return "Allow"
+            end else do 
+                return "Deny"
+            end
+        end else if not check_MAC_address_exists(MAC) do 
+            if check_user_location(location,username) do 
+                return "Allow with conditions"
+            end else do 
+                return "Deny"
+            end
+        end else do 
+            return "Deny"
+        end
+    end else do 
+        if check_MAC_address(MAC,username) or check_MAC_address_exists(MAC) do 
+            if check_device_location(location,MAC) and check_user_location(location,username) do 
+                return "Allow"
+            end else if not check_device_location(location,MAC) and check_user_location(location,username) do 
+                if check_user_location(location,username) do 
+                    return "Allow with conditions"
+                end else do 
+                    return "Deny"
+                end
+            end else do 
+                return "Deny"
+            end
+        end 
+    end
+end 
+
+
+function check_login_failure(authentication_requiest) do 
+    if current_time_login - start_time_loggin_failure <= time_login_threshold do 
+        if not check_credential(username,password) do 
+            num_login_failure = num_login_failure+1
+            if num_login_failure == 1 do 
+                start_time_loggin_failure = current_time_login
+            end
+        end else do 
+            if num_login_failure > num_login_failure_threshold do 
+                block_login_time_login_threshold()
+                num_login_failure = 0
+                return "Deny"
+            end else do 
+                call authentication_with_system(authentication_requiest)
+                //call authentication_without_system(authentication_requiest) 
+                num_login_failure = 0
+            end
+        end
+    end else do 
+        call authentication_with_system(authentication_requiest)
+        //call authentication_without_system(authentication_requiest) 
+    end 
+end
+

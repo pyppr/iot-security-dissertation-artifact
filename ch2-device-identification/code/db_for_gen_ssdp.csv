@@ -1,0 +1,47 @@
+﻿ssdp_type,ssdp_t,ssdp_v
+M-SEARCH * HTTP/1.1,ST,ssdp:all
+M-SEARCH * HTTP/1.1,MX,2
+M-SEARCH * HTTP/1.1,MAN,"\""ssdp:discover\"""
+M-SEARCH * HTTP/1.1,HOST,239.255.255.250:1900
+M-SEARCH * HTTP/1.1,ST,upnp:rootdevice
+NOTIFY * HTTP/1.1,NTS,ssdp:alive
+NOTIFY * HTTP/1.1,Location,http://192.168.1.141:8060/
+NOTIFY * HTTP/1.1,Location,http://192.168.1.141:8060/dial/dd.xml
+NOTIFY * HTTP/1.1,NT,upnp:rootdevice
+NOTIFY * HTTP/1.1,Cache-Control,max-age=3600
+NOTIFY * HTTP/1.1,Host,239.255.255.250:1900
+NOTIFY * HTTP/1.1,NT,urn:dial-multiscreen-org:service:dial:1
+NOTIFY * HTTP/1.1,NT,roku:ecp
+NOTIFY * HTTP/1.1,CACHE-CONTROL,max-age=100
+NOTIFY * HTTP/1.1,NT,urn:schemas-upnp-org:device:basic:1
+NOTIFY * HTTP/1.1,SERVER,"FreeRTOS/6.0.5, UPnP/1.0, IpBridge/0.1"
+NOTIFY * HTTP/1.1,LOCATION,http://192.168.0.102:80/description.xml
+NOTIFY * HTTP/1.1,LOCATION,http://192.168.0.100:80/description.xml
+NOTIFY * HTTP/1.1,SERVER,Linux/3.14.0 UPnP/1.0 IpBridge/1.33.0
+NOTIFY * HTTP/1.1,hue-bridgeid,001788FFFE6EBD93
+NOTIFY * HTTP/1.1,LOCATION,http://192.168.0.1:1900/igd.xml
+NOTIFY * HTTP/1.1,SERVER,ipos/7.0 UPnP/1.0 TL-WDR4300/1.0
+NOTIFY * HTTP/1.1,NT,urn:schemas-upnp-org:device:InternetGatewayDevice:1
+NOTIFY * HTTP/1.1,NT,urn:schemas-upnp-org:service:Layer3Forwarding:1
+NOTIFY * HTTP/1.1,NT,urn:schemas-upnp-org:device:WANDevice:1
+NOTIFY * HTTP/1.1,NT,urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1
+NOTIFY * HTTP/1.1,NT,urn:schemas-upnp-org:device:WANConnectionDevice:1
+NOTIFY * HTTP/1.1,NT,urn:schemas-upnp-org:service:WANIPConnection:1
+NOTIFY * HTTP/1.1,NT,urn:schemas-wifialliance-org:device:WFADevice:1
+NOTIFY * HTTP/1.1,NT,urn:schemas-wifialliance-org:service:WFAWLANConfig:1
+NOTIFY * HTTP/1.1,Server,SDK 4.3.0.0 UPnP/1.0 MiniUPnPd/1.6
+NOTIFY * HTTP/1.1,CACHE-CONTROL,max-age=60
+NOTIFY * HTTP/1.1,lOCATION,http://192.168.1.1:6352/rootDesc.xml
+NOTIFY * HTTP/1.1,OPT,http://schemas.upnp.org/upnp/1/0/;
+NOTIFY * HTTP/1.1,01-NLS,1
+NOTIFY * HTTP/1.1,BOOTID.UPNP.ORG,1
+NOTIFY * HTTP/1.1,CONFIGID.UPNP.ORG,1337
+NOTIFY * HTTP/1.1,NT,urn:schemas-upnp-org:service:WANPPPConnection:1
+NOTIFY * HTTP/1.1,OPT,"\""http://schemas.upnp.org/upnp/1/0/\"";"
+M-SEARCH * HTTP/1.1,ST,urn:dial-multiscreen-org:service:dial:1
+M-SEARCH * HTTP/1.1,USER-AGENT,Google Chrome/75.0.3770.142 Windows
+M-SEARCH * HTTP/1.1,MX,1
+M-SEARCH * HTTP/1.1,USER-AGENT,Google Chrome/85.0.4183.121 Mac OS X
+NOTIFY * HTTP/1.1,MAN,ssdp:discover
+NOTIFY * HTTP/1.1,MX,1
+NOTIFY * HTTP/1.1,ST,urn:dial-multiscreen-org:service:dial:1

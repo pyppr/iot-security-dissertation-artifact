@@ -1,0 +1,21 @@
+input device_ip, device_name, mode
+running = true
+uuid = random_uuid()
+device = {uuid, device_name}
+loop (running) do
+    loop (mode == "record") do
+        ip, type, data = get_event_from_listeners() //listeners = (dns, ssdp, mdns, port_scan, arp, nupnp, ws_discovery)
+        device.add_characteristic(type, data)
+        if (input "stop record") do
+            mode = "detect"
+        end
+    end
+    loop (mode == "detect") do
+        ip, type, data = get_event_from_listeners() //listeners = (dns, ssdp, mdns, port_scan, arp, nupnp, ws_discovery)
+        device, Jaccard_value = get_data_from_database().find_matching_device(type, data)
+        output device, Jaccard_value
+        if (input "stop detect") do
+            running false
+        end
+    end
+end

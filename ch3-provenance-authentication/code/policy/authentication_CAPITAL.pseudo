@@ -1,0 +1,130 @@
+FUNCTION check_credential(username,password) DO
+    IF user_exists(username) DO 
+        password_hash=hash(password)
+        IF check_credentials_in_database(username,password_hash) DO 
+            RETURN true
+        END ELSE DO 
+            RETURN false
+        END
+    END ELSE DO 
+        RETURN false
+    END
+END
+
+
+
+FUNCTION check_operating_plaltfrom(system,username) DO
+    system_in_ProvDB = get_system_in_provenance_database(username)
+    IF system == system_in_ProvDB DO 
+        RETURN true
+    END ELSE DO 
+        RETURN false
+    END
+END 
+
+FUNCTION check_MAC_address(MAC,username) DO
+    MAC_in_ProvDB = get_MAC_in_provenance_database(username)
+    IF MAC IN MAC_in_ProvDB DO 
+        RETURN true
+    END ELSE DO 
+        RETURN false
+    END
+END 
+
+FUNCTION check_MAC_address_exists(MAC) DO
+    all_MAC_in_ProvDB = get_all_MAC_in_provenance_database()
+    IF MAC IN all_MAC_in_ProvDB DO 
+        RETURN true
+    END ELSE DO 
+        RETURN false
+    END
+END 
+
+FUNCTION check_device_location(location,MAC) DO
+    device_location = get_location_in_provenance_database(MAC)
+    IF location == device_location DO 
+        RETURN true
+    END ELSE DO 
+        RETURN false
+    END
+END 
+
+FUNCTION check_user_location(location,username) DO
+    user_location = get_schedule_location(username)
+    IF location == user_location DO 
+        RETURN true
+    END ELSE DO 
+        RETURN false
+    END
+END
+
+FUNCTION authentication_location_base(authentication_requiest) DO
+    IF check_user_location(location,username) DO 
+        IF check_model(Model,username) DO
+            IF device_can_carry(Model) DO 
+                IF check_MAC_address(MAC,username) AND check_MAC_address_exists(MAC) DO 
+                    RETURN "Allow"
+                END ELSE IF check_MAC_address_exists(MAC) DO 
+                    RETURN "Allow with conditions"
+                END ELSE DO 
+                    RETURN "Deny"
+                END
+            END ELSE DO 
+                IF check_MAC_address(MAC,username) AND check_MAC_address_exists(MAC) DO 
+                    IF check_device_location(location,MAC) AND check_device_location_exists(location,MAC) DO 
+                        RETURN "Allow"
+                    END ELSE IF check_device_location_exists(location,MAC) DO 
+                        RETURN "Allow with conditions"
+                    END ELSE DO
+                        RETURN "Deny"
+                    END
+                END ELSE IF check_MAC_address_exists(MAC) AND check_device_location_exists(location,MAC)  DO 
+                    RETURN "Allow with conditions"
+                END ELSE DO
+                    RETURN "Deny"
+                END
+            END
+        END ELSE DO 
+            RETURN "Deny"
+        END
+    END ELSE DO 
+        RETURN "Deny"
+    END
+END 
+
+
+
+
+
+
+
+FUNCTION login_validation(authentication_requiest) DO 
+    IF current_time_login - start_time_loggin_failure <= time_login_threshold DO 
+        IF not check_credential(username,password) DO 
+            num_login_failure = num_login_failure+1
+            IF num_login_failure > num_login_failure_threshold DO 
+                block_login_time_login_threshold()
+                num_login_failure = 0
+                RETURN "Deny"
+            END ELSE IF num_login_failure == 1 DO 
+                start_time_loggin_failure = current_time_login
+                RETURN "Deny"
+            END ELSE DO 
+                RETURN "Deny"
+            END
+        END ELSE DO 
+            num_login_failure = 0
+            RETURN authentication_with_system(authentication_requiest)
+        END
+    END ELSE DO 
+        IF not check_credential(username,password) DO 
+            num_login_failure = 1
+            start_time_loggin_failure = current_time_login
+            RETURN "Deny"
+        END ELSE DO 
+            num_login_failure = 0
+            RETURN authentication_with_system(authentication_requiest)
+        END
+    END 
+END
+

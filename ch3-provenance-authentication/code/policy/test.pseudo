@@ -1,0 +1,47 @@
+IF check_user_location(location,username) DO 
+    IF check_model(Model,username) DO
+        IF device_can_carry(Model) DO 
+            IF check_MAC_address(MAC,username) AND check_MAC_address_exists(MAC) DO 
+                RETURN "Allow"
+            END ELSE IF check_MAC_address_exists(MAC) DO 
+                RETURN "Allow with conditions"
+            END ELSE DO 
+                RETURN "Deny"
+            END
+        END ELSE DO 
+            IF check_MAC_address(MAC,username) AND check_MAC_address_exists(MAC) DO 
+                IF check_device_location(location,MAC) AND check_device_location_exists(location,MAC) DO 
+                    RETURN "Allow"
+                END ELSE IF check_device_location_exists(location,MAC) DO 
+                    RETURN "Allow with conditions"
+                END ELSE DO
+                    RETURN "Deny"
+                END
+            END ELSE IF check_MAC_address_exists(MAC) AND check_device_location_exists(location,MAC)  DO 
+                RETURN "Allow with conditions"
+            END ELSE DO
+                RETURN "Deny"
+            END
+        END
+    END ELSE DO 
+        RETURN "Deny"
+    END
+END ELSE DO 
+    RETURN "Deny"
+END
+
+IF check_location(location) AND check_MAC_address(MAC) DO
+    RETURN "Allow"
+END ELSE IF NOT check_location(location) AND check_MAC_address(MAC) DO
+    RETURN "Allow"
+END ELSE IF NOT check_location(location) AND NOT check_MAC_address(MAC) AND check_system(sa) DO
+    RETURN "Allow"
+END ELSE IF check_location(location) AND NOT check_MAC_address(MAC) AND NOT check_system(sa) DO
+    IF check_origin_system_available() DO
+        RETURN "Deny"
+    END ELSE DO 
+        RETURN "Allow"
+    END
+END ELSE DO
+    RETURN "Deny"
+END
