@@ -50,9 +50,18 @@ configuration is needed. Requires `pandas`, `scikit-learn`, `openpyxl`,
 
 ## Status
 
-✅ Original notebooks and datasets migrated as-is from the experiment
-folder. ✅ Verified to execute end-to-end on the committed data under
-the pinned environment (Python 3.12, repository `requirements.txt`):
-`Jaccard_index-9.ipynb` and `ML-DecisionTreeClassifier_version3.ipynb`.
+✅ Original notebooks and datasets migrated from the experiment folder.
+✅ `Jaccard_index-9.ipynb` verified to execute end-to-end on the
+committed data under the pinned environment (Python 3.12, repository
+`requirements.txt`), reproducing its stored result (accuracy 1.0 on
+`dataset_gen`, 100 sampled records); one line that had lost its newline
+in the stored file was restored (the stored outputs show the original
+run executed the same two statements). Note the notebook's last edited
+state evaluates `dataset_gen` only — the other datasets' entries are
+commented out in `list_data`.
+⚠️ `ML-DecisionTreeClassifier_version3.ipynb` is kept as a historical
+working copy: its last edited state runs `CategoricalNB` (not a decision
+tree) on one dataset, and its final summary cell indexes five results —
+it fails there, as it also did in the stored original run.
 🚧 Still to confirm: which notebook versions produced the dissertation
 numbers (several iterations are kept).

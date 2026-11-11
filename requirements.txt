@@ -1,9 +1,12 @@
 # Shared Python dependencies for all chapters.
 # Pinned to the environment the chapter code was verified to run under
 # (Python 3.12 on Windows); nearby versions are expected to work too.
+# pandas is pinned < 3.0: the chapter notebooks use pre-3.0 indexing
+# behavior that pandas 3.x removed.
 numpy==2.5.4
-pandas==3.1.1
+pandas==2.2.3
 scikit-learn==1.9.1
 matplotlib==3.11.2
 openpyxl==3.1.5
 jupyter==1.1.1
+textdistance==4.6.3
