@@ -6,6 +6,7 @@ authors:
   - family-names: Roemsri
     given-names: Phornsawan
     affiliation: "Texas Tech University"
+    orcid: "https://orcid.org/0009-0004-6847-8120"
 license: MIT
 repository-code: "https://github.com/pyppr/iot-security-dissertation-artifact"
 abstract: >-
