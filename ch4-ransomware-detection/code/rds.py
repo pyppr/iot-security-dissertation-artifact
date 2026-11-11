@@ -66,11 +66,13 @@ def load_rows(path):
     """
     with open(path, newline="", encoding="utf-8-sig") as fh:
         raw = [r for r in csv.reader(fh)]
+    aliases = {a for names in PARAMS.values() for a in names}
     header_i = None
     for i, row in enumerate(raw):
         cells = [c.strip().strip('"').lower() for c in row]
-        if any(c in ("date", "time", "epoch", "system") for c in cells) \
-                and len(row) > 2:
+        if len(row) > 2 and (
+                any(c in ("date", "time", "epoch", "system") for c in cells)
+                or any(c in aliases for c in cells)):
             header_i = i
             break
     if header_i is None:

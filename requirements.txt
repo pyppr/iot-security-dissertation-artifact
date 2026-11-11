@@ -1,9 +1,9 @@
 # Shared Python dependencies for all chapters.
-# NOTE: versions will be pinned as each chapter's code is migrated in and
-# verified to run; until then this lists the expected core stack only.
-numpy
-pandas
-scikit-learn
-matplotlib
-openpyxl
-jupyter
+# Pinned to the environment the chapter code was verified to run under
+# (Python 3.12 on Windows); nearby versions are expected to work too.
+numpy==2.5.4
+pandas==3.1.1
+scikit-learn==1.9.1
+matplotlib==3.11.2
+openpyxl==3.1.5
+jupyter==1.1.1

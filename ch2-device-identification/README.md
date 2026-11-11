@@ -51,6 +51,8 @@ configuration is needed. Requires `pandas`, `scikit-learn`, `openpyxl`,
 ## Status
 
 ✅ Original notebooks and datasets migrated as-is from the experiment
-folder. 🚧 Still to do: confirm which notebook versions produced the
-numbers in the dissertation (several iterations are kept), and pin the
-environment they run under.
+folder. ✅ Verified to execute end-to-end on the committed data under
+the pinned environment (Python 3.12, repository `requirements.txt`):
+`Jaccard_index-9.ipynb` and `ML-DecisionTreeClassifier_version3.ipynb`.
+🚧 Still to confirm: which notebook versions produced the dissertation
+numbers (several iterations are kept).

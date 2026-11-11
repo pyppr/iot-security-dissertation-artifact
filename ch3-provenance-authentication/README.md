@@ -35,9 +35,13 @@ no real user data.
 
 ```bash
 cd code/policy
-python run_resultv3.py      # policy evaluation; writes to result.xlsx
+python run_resultv3.py      # policy evaluation; writes result.xlsx
+                            # (requests only) and result_test.xlsx /
+                            # result_test2.xlsx (requests + the policy's
+                            # "result" label column)
 
 cd ../ml
+cp ../policy/result_test.xlsx result.xlsx   # notebooks read ./result.xlsx
 jupyter notebook            # decision-tree comparison notebooks
 ```
 
@@ -49,12 +53,17 @@ repository-level `requirements.txt`).
 - The policy scripts load `dataset.xlsx` while the file on disk is
   `DataSet.xlsx` — fine on Windows (case-insensitive), fails on Linux;
   rename or symlink there.
-- `ML-DecisionTreeClassifier.ipynb` reads `data_for_train.xlsx`, which
-  lives in `code/policy/`; run it from there or copy the file next to
-  the notebook.
+- The ML notebooks load `result.xlsx` and expect it to carry the
+  policy's `result` label column — but `run_resultv3.py` writes the
+  labeled output to `result_test.xlsx` (its `result.xlsx` holds the
+  requests only). Copy `result_test.xlsx` to `code/ml/result.xlsx`
+  before running the notebooks, as shown above.
 
 ## Status
 
 ✅ Policy engine, decision-tree notebooks, and synthesized data migrated
-as-is. 🚧 Still to do: confirm `run_resultv3.py` is the version behind
-the dissertation numbers, and pin the environment.
+as-is. ✅ Verified end-to-end under the pinned environment (Python 3.12,
+repository `requirements.txt`): `run_resultv3.py` runs to completion on
+the committed data, and both ML notebooks execute on its labeled output.
+🚧 Still to confirm: that `run_resultv3.py` is the exact version behind
+the dissertation numbers.
