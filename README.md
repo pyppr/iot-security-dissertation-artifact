@@ -46,9 +46,9 @@ reproduce.
 
 ## Status
 
-The experiment code is currently being migrated into this layout,
-chapter by chapter. A chapter's README states whether its contents are
-complete.
+All four chapters (2–5) are complete and verified against the
+dissertation. Each chapter's README describes exactly what it
+reproduces, any known limitations, and how to run it.
 
 ## License
 

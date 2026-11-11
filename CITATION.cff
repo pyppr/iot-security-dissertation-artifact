@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite it as below."
+type: software
+title: "IoT Security Dissertation Artifact"
+authors:
+  - family-names: Roemsri
+    given-names: Phornsawan
+    affiliation: "Texas Tech University"
+license: MIT
+repository-code: "https://github.com/pyppr/iot-security-dissertation-artifact"
+abstract: >-
+  Public reproducibility artifact for the PhD dissertation
+  "Data-Driven Cybersecurity for Connected Devices: Traffic, Provenance,
+  and Behavioral Threat Detection" (Texas Tech University, December 2026).
+  Contains the code, data preparation scripts, and configurations for
+  Chapters 2 through 5, so that each comparison in the dissertation can
+  be rerun.
+keywords:
+  - IoT security
+  - device identification
+  - provenance-based authentication
+  - ransomware detection
+  - attack visualization
+  - reproducibility artifact
+preferred-citation:
+  type: thesis
+  thesis-type: "PhD dissertation"
+  title: "Data-Driven Cybersecurity for Connected Devices: Traffic, Provenance, and Behavioral Threat Detection"
+  authors:
+    - family-names: Roemsri
+      given-names: Phornsawan
+      affiliation: "Texas Tech University"
+  institution:
+    name: "Texas Tech University"
+  year: 2026
+  month: 12
