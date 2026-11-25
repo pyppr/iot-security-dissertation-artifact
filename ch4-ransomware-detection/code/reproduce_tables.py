@@ -156,11 +156,12 @@ def main():
                          *(exact(times[n][speed][which][2]) for n in names)])
         return rows
 
-    table("Time Computation table (seconds), thresholds of the original "
-          "analysis\n(config/thresholds_time_computation.json) - the "
-          "dissertation's Table IV.8",
+    table("Time Computation table (seconds) as the original analysis "
+          "computed it:\nits thresholds (config/thresholds_time_"
+          "computation.json), durations by time stamps",
           ["", *names], time_rows("original"))
-    table("Time Computation table (seconds), Table III thresholds",
+    table("Time Computation table (seconds), Table III thresholds, "
+          "durations by time stamps",
           ["", *names], time_rows("table3"))
     table("Attack duration by sample count (seconds; one sample per "
           "second,\nindependent of the machines' clocks)",
