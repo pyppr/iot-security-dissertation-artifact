@@ -1,0 +1,126 @@
+{
+  "_source": "Thresholds the original analysis used for the Time Computation table (Table IV.8 of the dissertation), at full precision, copied from sheet Table1 of the result workbooks in data/results/average-threshold/. Each attack subset (fast, slow, all) was analysed with thresholds from its own random 80/20 split of the normal data, and the Client subsets with the normal data of client 1 only, so these values differ slightly from Table III (config/thresholds.json), except the '(all)' sets of the Controller and the DB server, which are the Table III values.",
+  "_workbooks": {
+    "Client (fast)": "Fast_Client1.xlsx",
+    "Client (slow)": "Slow_Client1.xlsx",
+    "Client (all)": "Client1.xlsx",
+    "Controller (fast)": "Fast_Controller.xlsx",
+    "Controller (slow)": "Slow_Controller.xlsx",
+    "Controller (all)": "Controller.xlsx",
+    "DB server (fast)": "Fast_Dbserver.xlsx",
+    "DB server (slow)": "Slow_Dbserver.xlsx",
+    "DB server (all)": "Dbserver.xlsx"
+  },
+  "_selected_indicators": {
+    "Client (fast)": [
+      "DISK Read"
+    ],
+    "Client (slow)": [
+      "DISK Read"
+    ],
+    "Client (all)": [
+      "DISK Read"
+    ],
+    "Controller (fast)": [
+      "DISK Read"
+    ],
+    "Controller (slow)": [
+      "DISK Read"
+    ],
+    "Controller (all)": [
+      "DISK Read"
+    ],
+    "DB server (fast)": [
+      "MEMORY Usage"
+    ],
+    "DB server (slow)": [
+      "MEMORY Usage"
+    ],
+    "DB server (all)": [
+      "MEMORY Usage"
+    ]
+  },
+  "thresholds": {
+    "Client (fast)": {
+      "CPU Usage": 25.96647134287993,
+      "MEMORY Usage": 1066082053.326861,
+      "DISK Read": 7620.676952948927,
+      "DISK Write": 13874.52806768143,
+      "I/O Read": 0.3035435664505391,
+      "I/O Write": 517.6832980825908,
+      "Power Consumption": 3.981954543878506
+    },
+    "Client (slow)": {
+      "CPU Usage": 25.93057770996602,
+      "MEMORY Usage": 1065826166.863167,
+      "DISK Read": 7034.832928774534,
+      "DISK Write": 13195.20965392884,
+      "I/O Read": 0.298061585408142,
+      "I/O Write": 518.2898432623622,
+      "Power Consumption": 3.987770147028226
+    },
+    "Client (all)": {
+      "CPU Usage": 25.90936665857802,
+      "MEMORY Usage": 1066214459.042535,
+      "DISK Read": 7018.114188650467,
+      "DISK Write": 14327.64086386799,
+      "I/O Read": 0.285246299441883,
+      "I/O Write": 518.1642111831386,
+      "Power Consumption": 3.984380542170763
+    },
+    "Controller (fast)": {
+      "CPU Usage": 26.8750412476771,
+      "MEMORY Usage": 1151545476.649473,
+      "DISK Read": 11507.62076451484,
+      "DISK Write": 27936.26731968252,
+      "I/O Read": 0.1913544868788968,
+      "I/O Write": 515.5080324423835,
+      "Power Consumption": 4.064937650879661
+    },
+    "Controller (slow)": {
+      "CPU Usage": 26.74746860725637,
+      "MEMORY Usage": 1152417962.033451,
+      "DISK Read": 10033.36387793737,
+      "DISK Write": 26841.85699150703,
+      "I/O Read": 0.209545478229154,
+      "I/O Write": 514.1900758983622,
+      "Power Consumption": 4.05495960192438
+    },
+    "Controller (all)": {
+      "CPU Usage": 26.8262687603019,
+      "MEMORY Usage": 1152660987.247332,
+      "DISK Read": 13190.35294525896,
+      "DISK Write": 27141.82590439837,
+      "I/O Read": 0.2017697579595732,
+      "I/O Write": 513.7125184349787,
+      "Power Consumption": 4.052377184002776
+    },
+    "DB server (fast)": {
+      "CPU Usage": 55.37412830031572,
+      "MEMORY Usage": 2157062103.181487,
+      "DISK Read": 715.2043853866704,
+      "DISK Write": 31324223.37050273,
+      "I/O Read": 0.03191895361343371,
+      "I/O Write": 579.3170731707318,
+      "Power Consumption": 4.824843388960206
+    },
+    "DB server (slow)": {
+      "CPU Usage": 55.25352137138093,
+      "MEMORY Usage": 2157904302.065061,
+      "DISK Read": 948.2158500790246,
+      "DISK Write": 31221418.15683346,
+      "I/O Read": 0.03958177744585512,
+      "I/O Write": 579.2571165569585,
+      "Power Consumption": 4.817947131667158
+    },
+    "DB server (all)": {
+      "CPU Usage": 55.27645896867202,
+      "MEMORY Usage": 2157315116.440255,
+      "DISK Read": 883.5697255336845,
+      "DISK Write": 31244914.59828112,
+      "I/O Read": 0.03370182977543665,
+      "I/O Write": 580.0091142223455,
+      "Power Consumption": 4.823557873579152
+    }
+  }
+}

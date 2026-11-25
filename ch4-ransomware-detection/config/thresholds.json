@@ -1,5 +1,5 @@
 {
-  "_source": "Full-precision threshold values from the original analysis workbook (data/compare.xlsx, column N = average over the normal sample), matching Table III of the published paper (rounded there). Thresholds are the mean of each parameter over normal-operation Dstat samples, per Algorithm Building-RDS line 17.",
+  "_source": "Full-precision threshold values from the original analysis workbook (data/compare.xlsx, column N = average over the normal sample), matching Table III of the published paper (rounded there). Thresholds are the mean of each parameter over normal-operation Dstat samples, per Algorithm Building-RDS line 17; code/reproduce_tables.py --check recomputes them from data/dstat/split.",
   "_selected_indicators": {
     "Client": ["DISK Read"],
     "Controller": ["DISK Read", "I/O Read"],
