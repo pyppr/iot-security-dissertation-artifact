@@ -72,7 +72,7 @@ def load_runs(stem):
 
 def time_summary(runs, threshold, param):
     """(avg time to detect or None, runs detected, avg duration by time
-    stamps, avg duration by the samples: their number minus one)."""
+    stamps, avg duration by the clock without its resets)."""
     timed = rds.time_runs(runs, threshold, param)
     delays = [d for d, _, _ in timed if d is not None]
     return (rds.mean(delays) if delays else None, len(delays),
@@ -163,9 +163,9 @@ def main():
     table("Time Computation table (seconds), Table III thresholds, "
           "durations by time stamps",
           ["", *names], time_rows("table3"))
-    table("Attack duration by the samples (seconds from a run's first to "
-          "its last\nsample, one sample per second: the number of samples "
-          "minus one;\nindependent of the machines' clocks)",
+    table("Attack duration by the clock without its resets (seconds; a "
+          "step of more\nthan rds.RESET seconds between two samples is "
+          "the clock being set and\ncounts as one second)",
           ["", *names],
           [[f"Avg. attacked duration of {speed} attack",
             *(exact(times[n][speed]["table3"][3]) for n in names)]

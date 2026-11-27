@@ -38,11 +38,12 @@ standard deviation), with CPU capped at 100.
 The timing command reproduces the Time Computation table: for every
 attack run it reports how long after the first attack sample the
 parameter first exceeds its threshold, and how long the attack lasted.
-Both are differences of the samples' time-of-day stamps, as in the
-original analysis; the attack length is also given from the samples
-themselves (one sample per second, so the number of samples minus one:
-the seconds from the first to the last sample), which does not depend
-on the clock.
+The attack length is given twice: as the difference of the first and
+last samples' time-of-day stamps, as in the original analysis, and by
+the clock with its resets taken out (a step of more than RESET seconds
+between two consecutive samples is the clock being set, not elapsed
+time, and is counted as one second, the sampling interval). Times to
+detect are measured the second way.
 
 Usage:
   rds.py build  --normal normal.csv --attack attack.csv
@@ -77,6 +78,11 @@ OPTIONAL_PARAMS = {  # used only when the file has the column
     "Power Consumption": ("power est.", "power"),
 }
 DAY = 86400
+# A clock step longer than this between consecutive samples is a reset
+# of the clock, not elapsed time. In the data the steps are either at
+# most 8 s (seconds without a sample) or at least 2,092 s (the DB server
+# VM's clock jumping from its snapshot's time to the current time).
+RESET = 60
 
 
 def load_rows(path):
@@ -305,24 +311,42 @@ def split_runs(rows):
     return list(runs.values())
 
 
+def elapsed(run):
+    """Seconds from the run's first sample to each sample, by the clock,
+    with clock resets taken out.
+
+    Steps between consecutive time-of-day stamps wrap at midnight. A
+    step longer than RESET seconds is the clock being set (the DB server
+    VM's clock restarts from its snapshot's time and later jumps to the
+    current time) and counts as one second, the sampling interval; so a
+    run is timed piece by piece between its resets and the pieces are
+    added up. Shorter steps are kept as they are: a step of 2-8 s is a
+    second (or a few) without a sample, and that time did pass.
+    """
+    out = [0]
+    for a, b in zip(run, run[1:]):
+        step = (_clock(b) - _clock(a)) % DAY
+        out.append(out[-1] + (step if step <= RESET else 1))
+    return out
+
+
 def time_runs(runs, threshold, param):
     """Per run: seconds until `param` first exceeds `threshold`
     (None if it never does), attack length by the time stamps, and
-    attack length by the samples: one sample per second, so the number
-    of samples minus one (the seconds from the first to the last
-    sample).
+    attack length by the clock with its resets taken out (`elapsed`).
 
-    Time differences are taken between time-of-day stamps and wrap at
-    midnight, as in the original analysis. When the machine's clock is
-    set during a run the stamped length is off by the size of that
-    step; the length by the samples is not.
+    The stamped length is the difference of the first and last
+    time-of-day stamps, wrapping at midnight, as in the original
+    analysis; when the machine's clock is set during a run it is off by
+    the size of that step.
     """
     out = []
     for run in runs:
-        t0 = _clock(run[0])
-        delay = next(((_clock(r) - t0) % DAY for r in run
-                      if r[param] > threshold), None)
-        out.append((delay, (_clock(run[-1]) - t0) % DAY, len(run) - 1))
+        t = elapsed(run)
+        delay = next((s for s, r in zip(t, run) if r[param] > threshold),
+                     None)
+        stamped = (_clock(run[-1]) - _clock(run[0])) % DAY
+        out.append((delay, stamped, t[-1]))
     return out
 
 
@@ -346,7 +370,7 @@ def timing(args):
     stamped = mean([d for _, d, _ in first])
     sampled = mean([n for _, _, n in first])
     print(f"avg attack duration: {unrounded(stamped)} s by time stamps, "
-          f"{unrounded(sampled)} s by the samples (first to last)")
+          f"{unrounded(sampled)} s by the clock without its resets")
     print(f"{'Parameter':<18}{'Threshold':>18}{'Detected':>10}"
           f"{'Avg. time to detect (s)':>25}")
     for p in params:
