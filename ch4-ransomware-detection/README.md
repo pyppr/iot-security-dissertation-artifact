@@ -140,20 +140,25 @@ differences listed here:
   0.18 / 0.28 / 0.23 s for fast / slow / all attacks). With the
   Table III thresholds the Client's values are 0.23 / 0.30 / 0.26 s;
   Controller and DB server are the same either way.
-- **Time Computation table, attack durations.** Two measures are
-  printed by `rds.py timing` and `reproduce_tables.py`. The original
-  analysis took the difference between the time-of-day stamps of a
-  run's first and last attack sample. The DB server VM was restored
-  from a snapshot before each run, so its clock restarts from the
-  snapshot's time and later steps forward to the current time; in 16
-  of the 40 slow runs that step falls inside the attack, so those
-  stamps span hours while every slow run holds only 890–1,296
-  one-second samples. For the DB server the sample count is therefore
-  the attack's length: 1,034.20 s on average for the slow attack
-  (about 17 minutes; 13,293.93 s by time stamps) and 520.35 s for all
-  attacks (6,650.21 s by time stamps). Elsewhere the two measures
-  differ by at most 1.2%. The times to detect are not affected (0 s
-  for the DB server's indicator).
+- **Time Computation table, attack durations.** Two measures are printed
+  by `rds.py timing` and `reproduce_tables.py`. The original analysis
+  took the difference between the time-of-day stamps of a run's first
+  and last attack sample. The DB server VM was restored from a snapshot
+  before each run, so its clock restarts from the snapshot's time and
+  later steps forward to the current time; in 16 of the 40 slow runs
+  that step falls inside the attack, so those stamps span hours while
+  every slow run holds only 890–1,296 one-second samples. The second
+  measure therefore does not use the clock: a run lasts from its first
+  to its last one-second sample, that is, its number of samples minus
+  one (`len(run) - 1` in `rds.py`). For the DB server it gives the
+  attack's length: 1,034.20 s on average for the slow attack (about 17
+  minutes; 13,293.93 s by time stamps) and 520.35 s for all attacks
+  (6,650.21 s by time stamps). Elsewhere the two measures differ by at
+  most 1.2%. The dissertation's Time Computation table uses the second
+  measure for all three machines, so that every column is measured the
+  same way; `reproduce_tables.py` and `rds.py timing` print it
+  unrounded, and the dissertation rounds it half up to two decimals. The
+  times to detect are not affected (0 s for the DB server's indicator).
 
 ⚠️ `data/dstat/` holds every sample the analysis used, after the
 original cleaning (missing values filled; for the attack runs, only the

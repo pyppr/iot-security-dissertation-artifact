@@ -39,8 +39,10 @@ The timing command reproduces the Time Computation table: for every
 attack run it reports how long after the first attack sample the
 parameter first exceeds its threshold, and how long the attack lasted.
 Both are differences of the samples' time-of-day stamps, as in the
-original analysis; the attack length is also given as a sample count
-(one sample per second), which does not depend on the clock.
+original analysis; the attack length is also given from the samples
+themselves (one sample per second, so the number of samples minus one:
+the seconds from the first to the last sample), which does not depend
+on the clock.
 
 Usage:
   rds.py build  --normal normal.csv --attack attack.csv
@@ -173,6 +175,12 @@ def mean(xs):
     return math.fsum(xs) / len(xs)
 
 
+def unrounded(x):
+    """Up to four decimals: averages of whole seconds over 40 or 80 runs
+    show unrounded (the dissertation rounds them half up)."""
+    return f"{x:,.4f}".rstrip("0").rstrip(".")
+
+
 def std(xs):
     m = mean(xs)
     return (math.fsum((x - m) ** 2 for x in xs) / len(xs)) ** 0.5
@@ -300,12 +308,14 @@ def split_runs(rows):
 def time_runs(runs, threshold, param):
     """Per run: seconds until `param` first exceeds `threshold`
     (None if it never does), attack length by the time stamps, and
-    attack length by sample count.
+    attack length by the samples: one sample per second, so the number
+    of samples minus one (the seconds from the first to the last
+    sample).
 
     Time differences are taken between time-of-day stamps and wrap at
     midnight, as in the original analysis. When the machine's clock is
     set during a run the stamped length is off by the size of that
-    step; the sample count is not.
+    step; the length by the samples is not.
     """
     out = []
     for run in runs:
@@ -333,9 +343,10 @@ def timing(args):
 
     first = time_runs(runs, thresholds[params[0]], params[0])
     print(f"component: {args.component}   attack runs: {len(runs)}")
-    print(f"avg attack duration: {mean([d for _, d, _ in first]):,.2f} s "
-          f"by time stamps, {mean([n for _, _, n in first]):,.2f} s "
-          f"by sample count")
+    stamped = mean([d for _, d, _ in first])
+    sampled = mean([n for _, _, n in first])
+    print(f"avg attack duration: {unrounded(stamped)} s by time stamps, "
+          f"{unrounded(sampled)} s by the samples (first to last)")
     print(f"{'Parameter':<18}{'Threshold':>18}{'Detected':>10}"
           f"{'Avg. time to detect (s)':>25}")
     for p in params:
