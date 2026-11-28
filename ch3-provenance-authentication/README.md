@@ -34,6 +34,13 @@ no real user data.
 - `figures/` — the method and flow diagrams from the underlying
   publication ("Provenance Location-based Authentication in Cloud
   Computing"), for reference against the chapter text.
+  `flowchart_dissertation.png` is the dissertation's Figure III.3,
+  redrawn for the dissertation so that its order of checks matches
+  `code/ml/run_result.py`: user location, then device type, then the
+  MAC address and device location checks (the "Qualified?" step after
+  Allow with condition is in the diagram only, not in the code).
+  `flow.png` is the publication's version, which checks the device type
+  only after a MAC address match.
 
 ## How to run
 
